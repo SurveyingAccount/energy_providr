@@ -1,0 +1,44 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/energy_providr.styles.css" asp-append-version="true" />
+
+    
+</head>
+
+<body>
+	<div class="container-fluid justify-content-center align-items-center">
+
+        <h2 class="d-flex justify-content-center align-items-center">Save Energy</h2>
+
+            <div class="home-container justify-content-center align-items-center">
+
+			    <div class="single-container">
+                    <div class="single-container-text">Green Technolgy News</div>
+                    <a class="single-container-button">Find Out More</a>    
+                </div>
+                <div class="single-container">
+				    <div class="single-container-text">Find Out how much carbon you use</div>
+                <a class="single-container-button" asp-area="" asp-page="/CarbonFootprint">Reduce Carbon Footprint</a>
+                </div>
+
+                <div class="single-container">
+                    <div class="single-container-text">Get Solar panels Installed Now</div>
+                    <a class="single-container-button" asp-page="/BlogChoice">Find Out More</a>
+                </div>
+		</div>
+
+	</div>
+</body>
+</html>
+

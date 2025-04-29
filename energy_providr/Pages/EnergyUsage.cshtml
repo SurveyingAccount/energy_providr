@@ -1,0 +1,164 @@
+﻿@page
+@model energy_providr.Pages.EnergyUsageModel
+@{
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Usage Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <div class="calculator-graph-wrapper">
+        <div class="energy-container">
+			<h2>Energy Usage Calculator</h2>
+            <!-- Power & Hours -->
+            <label for="power">Power Rating (Watts):</label>
+            <input type="number" id="power" placeholder="e.g. 1000" min="1" step="1" required>
+
+            <label for="hours">Usage per Day (Hours):</label>
+            <input type="number" id="hours" placeholder="e.g. 2.5" min="0.1" step="0.1" required>
+
+            <!-- Driving -->
+            <label for="fuel">Fuel Consumption (Liters):</label>
+            <input type="number" id="fuel" placeholder="e.g. 20" min="0.1" step="0.1" required>
+
+            <label for="distance">Distance Traveled (Kilometers):</label>
+            <input type="number" id="distance" placeholder="e.g. 150" min="0.1" step="0.1" required>
+
+            <label for="drivingTime">Time Spent Driving (Hours):</label>
+            <input type="number" id="drivingTime" placeholder="e.g. 3" min="0.1" step="0.1" required>
+
+            <!-- Gas -->
+            <label for="gas">Gas Consumption (Cubic Meters):</label>
+            <input type="number" id="gas" placeholder="e.g. 10" min="0.1" step="0.1" required>
+
+            <!-- Water -->
+            <label for="water">Water Used (Liters):</label>
+            <input type="number" id="water" placeholder="e.g. 300" min="0.1" step="0.1" required>
+
+            <!-- Submit Button -->
+            <button onclick="calculateEnergy()">Calculate</button>
+
+            <h3>Results:</h3>
+            <p id="dailyUsage">Daily Usage: 0 kWh</p>
+            <p id="monthlyUsage">Monthly Usage: 0 kWh</p>
+            <p id="yearlyUsage">Yearly Usage: 0 kWh</p>
+
+		</div>
+	
+        <div class="graph-container">
+        <canvas id="usageChart" width="300" height="300"></canvas>
+		</div>
+	</div>
+
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        function calculateEnergy() {
+            let power = +document.getElementById("power").value;
+            let hours = +document.getElementById("hours").value;
+            let fuel = +document.getElementById("fuel").value;
+            let distance = +document.getElementById("distance").value;
+            let drivingTime = +document.getElementById("drivingTime").value;
+            let gas = +document.getElementById("gas").value;
+            let water = +document.getElementById("water").value;
+
+            // Validate all fields are positive
+            if ([power, hours, fuel, distance, drivingTime, gas, water].some(val => val <= 0 || isNaN(val))) {
+                alert("Please enter valid positive numbers for all fields.");
+                return;
+            }
+
+            // Basic electricity usage calculation
+            let daily = (power * hours) / 1000;
+            let monthly = daily * 30;
+            let yearly = daily * 365;
+
+            // Display the combined results
+            document.getElementById("dailyUsage").textContent =
+                `Daily Electricity Usage: ${daily.toFixed(2)} kWh`;
+
+            document.getElementById("monthlyUsage").textContent =
+                `Monthly Electricity: ${monthly.toFixed(2)} kWh | Fuel: ${fuel} L | Driving: ${drivingTime} hrs | Gas: ${gas} m³`;
+
+            document.getElementById("yearlyUsage").textContent =
+                `Yearly Electricity: ${yearly.toFixed(2)} kWh | Distance: ${distance} km | Water: ${water} L`;
+        }
+
+
+        let usageChart; // Global chart instance
+
+        function calculateEnergy() {
+            let power = +document.getElementById("power").value;
+            let hours = +document.getElementById("hours").value;
+            let fuel = +document.getElementById("fuel").value;
+            let distance = +document.getElementById("distance").value;
+            let drivingTime = +document.getElementById("drivingTime").value;
+            let gas = +document.getElementById("gas").value;
+            let water = +document.getElementById("water").value;
+
+            if ([power, hours, fuel, distance, drivingTime, gas, water].some(val => val <= 0 || isNaN(val))) {
+                alert("Please enter valid positive numbers for all fields.");
+                return;
+            }
+
+            let daily = (power * hours) / 1000;
+            let monthly = daily * 30;
+            let yearly = daily * 365;
+
+            document.getElementById("dailyUsage").textContent = `Daily Electricity Usage: ${daily.toFixed(2)} kWh`;
+            document.getElementById("monthlyUsage").textContent = `Monthly Electricity: ${monthly.toFixed(2)} kWh | Fuel: ${fuel} L | Driving: ${drivingTime} hrs | Gas: ${gas} m³`;
+            document.getElementById("yearlyUsage").textContent = `Yearly Electricity: ${yearly.toFixed(2)} kWh | Distance: ${distance} km | Water: ${water} L`;
+
+            updateChart([monthly, fuel, gas, water]);
+        }
+
+        function updateChart(data) {
+            const labels = ['Electricity (kWh)', 'Fuel (L)', 'Gas (m³)', 'Water (L)'];
+
+            if (usageChart) {
+                usageChart.data.datasets[0].data = data;
+                usageChart.update();
+            } else {
+                const ctx = document.getElementById('usageChart').getContext('2d');
+                usageChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Monthly Usage',
+                            data: data,
+                            backgroundColor: [
+                                'rgba(75, 192, 192, 0.6)',
+                                'rgba(255, 99, 132, 0.6)',
+                                'rgba(255, 206, 86, 0.6)',
+                                'rgba(54, 162, 235, 0.6)'
+                            ],
+                            borderColor: [
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(54, 162, 235, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+</html>

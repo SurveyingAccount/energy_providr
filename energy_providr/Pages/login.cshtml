@@ -1,0 +1,32 @@
+﻿@page
+@model energy_providr.Pages.loginModel
+
+<head>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+
+<form method="post" class="form">
+    <div class="signin-form-group labels">
+        <div class="signin-form-group">
+            <label asp-for="Username">Username</label>
+            <input asp-for="Username" class="form-control" type="text" placeholder="Username" />
+        </div>
+        <div class="signin-form-group">
+            <label asp-for="Password">Password</label>
+            <input asp-for="Password" class="form-control" type="password" placeholder="Password" />
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Sign in</button>
+
+    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div class="text-danger">@Model.ErrorMessage</div>
+    }
+
+    <div class="form-row">
+        <label>Don't Have an Account yet?</label>
+    </div>
+    <div class="form-row">
+        <label>Set up your account <a asp-page="/SignUp">Sign up</a></label>
+    </div>
+</form>

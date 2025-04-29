@@ -1,0 +1,43 @@
+﻿@page "{id:int}"
+@model energy_providr.Pages.Index1Model
+@{
+    var blog = Model.Blog; // Get the blog post based on the ID
+}
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@(blog != null ? blog.Title : "Blog Not Found")</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/energy_providr.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <!-- Left Image -->
+    <div class="image-container left-image"></div>
+
+    <!-- Right Image -->
+    <div class="image-container right-image"></div>
+
+    <!-- Main Content Section -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 main-content">
+                <div class="blog-content">
+                    @if (blog != null)
+                    {
+                        <h2>@blog.Title</h2>
+                        <p>@blog.Contents</p>
+                    }
+                    else
+                    {
+                        <h2>Blog Not Found</h2>
+                        <p>The blog you are looking for does not exist.</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

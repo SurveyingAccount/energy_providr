@@ -1,0 +1,431 @@
+:root {
+    /* #region Text Colors */
+    --text-50: #e9f8fc; /* Light Blue */
+    --text-100: #d3f0f8; /* Pale Blue */
+    --text-200: #a7e1f1; /* Sky Blue */
+    --text-300: #7bd2ea; /* Soft Cyan */
+    --text-400: #4fc3e3; /* Bright Cyan */
+    --text-500: #22b4dd; /* Vivid Blue */
+    --text-600: #1c90b0; /* Deep Blue */
+    --text-700: #156c84; /* Dark Cyan */
+    --text-800: #0e4858; /* Teal */
+    --text-900: #07242c; /* Midnight Blue */
+    --text-950: #031216; /* Almost Black */
+    /* #endregion */
+    /* #region Background Colors */
+    --background-50: #eef8ec; /* Light Green */
+    --background-100: #def2d9; /* Pale Green */
+    --background-200: #bce4b4; /* Soft Green */
+    --background-300: #9bd78e; /* Pastel Green */
+    --background-400: #7aca68; /* Fresh Green */
+    --background-500: #59bd42; /* Apple Green */
+    --background-600: #479735; /* Earthy Green */
+    --background-700: #357128; /* Dark Forest */
+    --background-800: #234b1b; /* Deep Green */
+    --background-900: #12260d; /* Near Black Green */
+    --background-950: #091307; /* Almost Black */
+    /* #endregion */
+    /* #region Primary Colors */
+    --primary-50: #e6feed; /* Mint */
+    --primary-100: #cdfedc; /* Light Mint */
+    --primary-200: #9bfdb8; /* Soft Mint */
+    --primary-300: #69fc95; /* Pastel Green */
+    --primary-400: #37fb72; /* Bright Green */
+    --primary-500: #05fa4f; /* Neon Green */
+    --primary-600: #04c83f; /* Vibrant Green */
+    --primary-700: #03962f; /* Rich Green */
+    --primary-800: #02641f; /* Deep Green */
+    --primary-900: #013210; /* Dark Green */
+    --primary-950: #011908; /* Almost Black Green */
+    /* #endregion */
+    /* #region Secondary Colors */
+    --secondary-50: #ecf6f8; /* Light Aqua */
+    --secondary-100: #d9ecf2; /* Pale Aqua */
+    --secondary-200: #b4dae4; /* Soft Aqua */
+    --secondary-300: #8ec7d7; /* Cool Aqua */
+    --secondary-400: #68b5ca; /* Sky Aqua */
+    --secondary-500: #42a2bd; /* Ocean Blue */
+    --secondary-600: #358297; /* Deep Ocean */
+    --secondary-700: #286171; /* Dark Aqua */
+    --secondary-800: #1b414b; /* Teal Blue */
+    --secondary-900: #0d2026; /* Midnight Teal */
+    --secondary-950: #071013; /* Almost Black */
+    /* #endregion */
+    /* #region Accent Colors */
+    --accent-50: #e7f8fd; /* Ice Blue */
+    --accent-100: #d0f2fb; /* Soft Blue */
+    --accent-200: #a0e5f8; /* Sky Blue */
+    --accent-300: #71d8f4; /* Bright Cyan */
+    --accent-400: #41cbf1; /* Aqua Cyan */
+    --accent-500: #12beed; /* Electric Blue */
+    --accent-600: #0e98be; /* Deep Blue */
+    --accent-700: #0b728e; /* Dark Cyan */
+    --accent-800: #074c5f; /* Deep Teal */
+    --accent-900: #04262f; /* Midnight Teal */
+    --accent-950: #021318; /* Almost Black */
+    /* #endregion */
+}
+/* #region Global Font and Body Styling */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: var(--background-100) !important; /* Light background color */
+    color: var(--text-900) !important; /* Dark text */
+}
+/* #endregion */
+/* #region Navbar */
+.navbar {
+    background-color: var(--secondary-50) !important;
+}
+
+    .navbar .navbar-brand,
+    .navbar .nav-link {
+        border-radius: 5px;
+        color: var(--text-900) !important;
+        background-color: var(--primary-500) !important;
+    }
+
+        .navbar .nav-link:hover {
+            color: var(--text-900) !important;
+        }
+
+/* #region Button Styles */
+.btn-outline-success {
+    border-color: var(--secondary-400) !important;
+    color: var(--text-900) !important;
+    background-color: transparent !important;
+}
+
+    .btn-outline-success:hover {
+        transform: scale(1.05);
+        border-width: 2px;
+        background-color: transparent !important;
+    }
+/* #endregion */
+/* #region Search */
+
+/* #region Search Input */
+.search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-input,
+.search-input-outline-success,
+.search-input:focus {
+    border-color: var(--text-900);
+    color: var(--text-900);
+    background-color: var(--background-200);
+}
+/* #endregion */
+/* #region Search Button */
+.search-btn-outline-success {
+    border-color: var(--secondary-400) !important;
+    color: var(--text-900) !important;
+    background-color: var(--secondary-400) !important;
+}
+
+    .search-btn-outline-success:hover {
+        border-width: 2px;
+        background-color: var(--secondary-400) !important;
+    }
+/* #endregion */
+/* #region Login Button */
+.login-btn-outline-success {
+    border-color: var(--primary-500) !important;
+    color: var(--text-900) !important;
+    background-color: var(--primary-500) !important;
+}
+
+    .login-btn-outline-success:hover {
+        transform: scale(1.05);
+        border-width: 2px;
+        background-color: var(--primary-500) !important;
+    }
+/* #endregion */
+/* #endregion */
+/* #endregion */
+/* #region HomePage*/
+.home-container {
+   display: grid;
+  grid-template: 100px / auto auto auto;
+  grid-gap: 10px;
+  padding: 10px;
+}
+.single-container{
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
+.single-container-text{
+    font-size:15px;
+    font-weight:600;
+}
+.single-container-button{
+    object-fit:scale-down;
+    font-size:15px;
+    background-color:var(--primary-300);
+}
+/* #endregion */
+/* #region Footer */
+footer {
+    background-color: var(--background-100) !important;
+    color: var(--background-200) !important;
+    padding: 20px;
+    text-align: center;
+}
+/* #endregion */
+/* #region Info Page - Image Container */
+.image-container {
+    background-image: url('/images/forest-1.jpg');
+    background-size: cover;
+    min-height: 100vh;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 25%;
+    z-index: -1;
+}
+
+/* Left and Right Image */
+.left-image {
+    left: 0;
+    background-position: left center;
+}
+
+.right-image {
+    right: 0;
+    background-position: right center;
+}
+
+/* #region Main Content */
+.main-content {
+    z-index: 1;
+    padding: 40px;
+    text-align: center;
+    position: relative;
+    width: 75%;
+    margin: auto;
+}
+/* #endregion */
+/* #endregion */
+/* #region Blog Choice Box */
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 10px; /* Add spacing between buttons */
+}
+
+.blog-btn {
+    width: fit-content;
+    height: fit-content;
+    padding: 10px 20px;
+    border: 2px solid var(--secondary-500);
+    border-radius: 5px;
+    background-color: var(--background-200);
+    color: inherit;
+    font-size: 16px;
+    cursor: pointer;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+    .blog-btn:hover {
+        color: var(--primary-500);
+        background-color: var(--background-300);
+    }
+/* #endregion */
+/* #region Login Page */
+.labels {
+    text-align: center;
+}
+
+.form {
+    align-content: center;
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+    text-align: center;
+    display: center;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.button {
+    display: center;
+}
+
+.signin-form-group {
+    width: 75%;
+    align-content: center;
+    display: center;
+    display: block;
+}
+/* #endregion*/
+/* #region Booking System*/
+
+.booking-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+
+.times-container {
+    width: 40%;
+    padding: 10px;
+    text-align: center;
+    visibility: hidden; /* Hidden until a day is clicked */
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 12px;
+    max-width: 700px;
+    min-width: 250px;
+    padding: 5px;
+}
+/* Style for day buttons */
+.day {
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: var(--primary-100);
+    color: var(--text-900);
+    border: 1px solid #ccc;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+    .day:hover {
+        color: var(--accent-500);
+    }
+
+/* Style for time slots */
+.slot {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+    cursor: pointer;
+    color:var(--text-900);
+    background-color: var(--secondary-400);
+    transition: background 0.3s;
+}
+
+    .slot:hover {
+        background: var(--secondary-200);
+    }
+
+
+
+
+/* #endregion */
+/* #region Energy-Calculator */
+/* Container for both calculator and graph */
+.calculator-graph-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+/* Keep your existing energy-container styling */
+.energy-container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+/* Graph container styling */
+.graph-container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 100%;
+}
+
+/* Keep existing input styles */
+input {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Button styling */
+button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    button:hover {
+        background-color: #218838;
+    }
+
+/* #endregion */
+#floatingButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.high-contrast {
+    background-color: #000 !important;
+    color: #fff !important;
+}
+
+    .high-contrast a {
+        color: #ff0 !important;
+    }
+
+    /* Optional: Add specific styles for the button in high contrast mode */
+    .high-contrast button, .high-contrast a {
+        color: #ff0 !important;
+    }
+
+/* Styling for the slider */
+input[type="range"] {
+    width: 100%;
+    margin: 10px 0;
+}
+
+

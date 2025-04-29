@@ -1,0 +1,34 @@
+﻿@page
+@model energy_providr.Pages.bookingSystemModel
+@{
+}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/energy_providr.styles.css" asp-append-version="true" />
+</head>
+<body>
+
+    <!-- Booking System Content -->
+    <div id="bookingContainer" style="visibility: hidden;">
+        <h2 id="monthDisplay"></h2>
+        <button id="prevMonthBtn">Previous Month</button>
+        <button id="nextMonthBtn">Next Month</button>
+
+        <div class="booking-container">
+            <div id="timesContainer" class="times-container" style="visibility: hidden;">
+                <h3>Available Times</h3>
+                <div id="timeSlots" ></div>
+            </div>
+
+            <div id="bookingGrid" class="grid-container"></div>
+        </div>
+    </div>
+
+
+    <script src="/js/site.js"></script>
+</body>
+</html>

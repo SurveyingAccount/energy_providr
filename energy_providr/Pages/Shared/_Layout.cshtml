@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - energy_providr</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/energy_providr.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item my-2 m-sm-2 btn-outline-success">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                        </li>
+                        <li class="nav-item my-2 m-sm-2 btn-outline-success">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                        </li>
+						<li class="nav-item my-2 m-sm-2 btn-outline-success">
+							<a class="nav-link text-dark" asp-area="" asp-page="/BlogChoice">Blogs</a>
+						</li>
+                        <li class="nav-item my-2 m-sm-2 btn-outline-success">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/CarbonFootprint">Reduce Carbon Footprint</a>
+                        </li>
+                        @if (User.Identity != null && User.Identity.IsAuthenticated)
+                        {
+                         <li class="nav-item my-2 m-sm-2 btn-outline-success">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/bookingSystem">Bookings</a>
+                         </li>
+                        }
+                        else
+                        {
+
+                        }  
+                        
+                        @if (User.Identity != null && User.Identity.IsAuthenticated)
+                        {
+                         <li class="nav-item my-2 m-sm-2 btn-outline-success">
+                           <a class="nav-link text-dark" asp-area="" asp-page="/EnergyUsage">Calculator</a>
+                         </li>
+                        }
+
+                        else{
+                                
+                        }
+                        
+                        
+					</ul>
+                    <div class="search">
+						<input type="search" class="form-control search-input search-input-outline-success" id="inputSearch" placeholder="Search Here">
+						<button type="submit" class="btn search-btn-outline-success">Search</button>
+                        
+					</div>
+
+
+
+                    @if (User.Identity != null && User.Identity.IsAuthenticated)
+                    {
+                        <form method="post" action="/logout" class="d-inline">
+                            <button type="submit" class="btn btn-danger my-2 m-sm-2">Logout</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <a href="/login" class="btn login-btn-outline-success my-2 m-sm-2" type="button">Login/signup</a>
+                    }
+
+
+                        
+                    
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Always Visible Floating Button with Dropdown Menu -->
+    <div id="floatingButton" class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            Accessibility Options
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="floatingButton">
+            <li>
+                <label for="fontSizeSlider" class="dropdown-item">Font Size</label>
+                <input type="range" id="fontSizeSlider" class="dropdown-item" min="10" max="30" value="16" step="1" />
+            </li>
+            <li><a class="dropdown-item" href="#" id="toggleContrast">Toggle High Contrast</a></li>
+            <li><a class="dropdown-item" href="#" id="resetFontSize">Reset Font Size</a></li> <!-- Reset Button -->
+        </ul>
+    </div>
+
+
+
+
+
+        
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <h1>FAQS</h1>
+        <div class="container">
+            &copy; 2025 - energy_providr - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

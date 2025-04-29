@@ -1,0 +1,28 @@
+﻿@page
+@model energy_providr.Pages.BlogChoiceModel
+@{
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/energy_providr.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="box">
+            @foreach (var blog in Model.Blogs)
+            {
+                <!-- Add data-id attribute to store blog ID -->
+                <button class="blog-btn" data-id="@blog.Id">@blog.Title</button>
+            }
+        </div>
+    </div>
+
+    <!-- Include site.js for navigation functionality -->
+    <script src="~/js/site.js"></script>
+</body>
+</html>
